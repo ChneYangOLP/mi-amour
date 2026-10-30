@@ -1,4 +1,29 @@
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+// One brief excerpt per song; the song label links to its lyric source.
+const heroLyrics=[
+ {text:'一个人的想念',song:'一个人想着一个人',url:'https://www.joox.com/mo/single/fY_rrhm2QGF%2BRv5LCbqKWw%3D%3D'},
+ {text:'不过失去了一点点',song:'不过失去了一点点',url:'https://www.joox.com/mo/single/LXwh7%2BM8rzozKU47%2BxOUkg%3D%3D'},
+ {text:'你陪我走过的雨季',song:'雨季',url:'https://www.joox.com/mo/single/AD7BpIiki1i6hRjlIsV1xQ%3D%3D'},
+ {text:'记得这里还有我',song:'这里还有我',url:'https://www.joox.com/hk/single/1iXUtVrkF6MgvZ6c4uhIIA%3D%3D'},
+ {text:'原来最好的拥有',song:'数不尽的星空',url:'https://www.mulanci.org/lyric/sl271033/'},
+ {text:'当赚一些坚强',song:'偏爱',url:'https://www.mulanci.org/lyric/tl270992/'}
+];
+let heroLyricIndex=-1;
+function changeHeroLyric(){
+ // Pick uniformly from all other songs, avoiding consecutive repeats.
+ const choice=Math.floor(Math.random()*(heroLyrics.length-(heroLyricIndex<0?0:1)));
+ heroLyricIndex=heroLyricIndex<0?choice:choice>=heroLyricIndex?choice+1:choice;
+ const lyric=heroLyrics[heroLyricIndex];
+ $('#hero-lyric-text').textContent=lyric.text;
+ $('#hero-lyric-song').textContent=`— 曾沛慈《${lyric.song}》 ↗`;
+ $('#hero-lyric-song').href=lyric.url;
+ if(!matchMedia('(prefers-reduced-motion:reduce)').matches){
+  $('#lyric-content').getAnimations().forEach(animation=>animation.cancel());
+  $('#lyric-content').animate([{opacity:.3,transform:'translateY(4px)'},{opacity:1,transform:'translateY(0)'}],{duration:240,easing:'ease-out'});
+ }
+}
+$('#next-lyric').addEventListener('click',changeHeroLyric);
+changeHeroLyric();
 const facets={all:['ALL AMOUR','全部珍藏'],stage:['STAGE & MIC','舞台发光时刻'],daily:['SMILE & DAILY','治愈日常'],drama:['DRAMA & ROLES','角色掠影'],editorial:['EDITORIAL','画报与穿搭']};
 const titles=['谜之音，光里的你','唱给这个世界的温柔','每一个有你的现场','冬日里的闪闪发光','最初的心动，仍然记得'];
 const periods=['2019.11.22','2015.08.14','2014.08.22','2017.12','2008.03.15'];
