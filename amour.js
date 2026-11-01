@@ -6,7 +6,13 @@ const heroLyrics=[
  {lines:['我心爱的你','我是真的好想你'],song:'不过失去了一点点',url:'https://www.joox.com/my-zh_cn/single/LXwh7%2BM8rzozKU47%2BxOUkg%3D%3D'},
  {lines:['孤单的你','独自一人走过这雨季'],song:'雨季',url:'https://www.youtube.com/watch?v=iGQQZtwJDDQ'},
  {lines:['你在世界哪端','我都不会走开'],song:'这里还有我',url:'https://www.joox.com/hk/single/1iXUtVrkF6MgvZ6c4uhIIA%3D%3D'},
- {lines:['原来最好的拥有','是不曾拥有'],song:'数不尽的星空',url:'https://www.mulanci.org/lyric/sl271033/'}
+ {lines:['原来最好的拥有','是不曾拥有'],song:'数不尽的星空',url:'https://www.mulanci.org/lyric/sl271033/'},
+ {lines:['等着幸福降临','请怀着决心，撑多两季'],song:'下周同样时间',album:'下周同样时间',url:'https://www.joox.com/my-zh_cn/single/_SLpB2jr_hTk5X5qpqGlAA%3D%3D'},
+ {lines:['我们都在学','每天都勇敢一点'],song:'数到十',album:'下周同样时间',url:'https://www.joox.com/my-zh_cn/single/O8sj2fL5vBsToQ1lv%2Bc6Tw%3D%3D'},
+ {lines:['对天发誓','这是最后一次'],song:'最后一次哭',album:'下周同样时间',url:'https://www.joox.com/my-zh_cn/single/0BywF3Qulx%2Buy0QXsb7P6w%3D%3D'},
+ {lines:['知情地拥有','识趣放掉'],song:'识趣',album:'谜之音',url:'https://www.joox.com/hk/single/ZU8rHXF_dqgTSSvKBsgDhQ%3D%3D'},
+ {lines:['亲爱的，这些年','感谢有你在身边'],song:'大风吹',album:'谜之音',url:'https://www.joox.com/hk/single/xFmDRjIvNsVxygwCKcwoHQ%3D%3D'},
+ {lines:['每一次想你的时候','隐约地好像还有'],song:'没有了',album:'谜之音',url:'https://www.joox.com/hk/single/SLNSNii92lbyP4as4nODXw%3D%3D'}
 ];
 let heroLyricIndex=-1;
 function changeHeroLyric(){
