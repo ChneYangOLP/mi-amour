@@ -1,0 +1,128 @@
+[
+  {
+    "title": "谜之音",
+    "artist": "曾沛慈",
+    "sha256": "3e174f8cd27b4fee535090391fe8fe0824b1498e53d03360bd989c8fc09451c1",
+    "src": "music/track-01.mp3"
+  },
+  {
+    "title": "一个人想着一个人",
+    "artist": "曾沛慈",
+    "sha256": "abe548e7e774fd1bd0cdcbb5dfa21ce1e15a00df20806ca7db9c3d50405f3e19",
+    "src": "music/track-02.mp3"
+  },
+  {
+    "title": "一半一半（Live）",
+    "artist": "曾沛慈 / 淡淡 / 黄灿灿",
+    "sha256": "2b02fd147484d9ee0398dc7eb542f666d392a560e1121fa99e3713ebba368f39",
+    "src": "music/track-03.mp3"
+  },
+  {
+    "title": "一抹黄色的天",
+    "artist": "曾沛慈",
+    "sha256": "9102c955f07806936fe395e9319d4514668795f821d076c713f70afc6ed9a285",
+    "src": "music/track-04.mp3"
+  },
+  {
+    "title": "一样的月光(Live)",
+    "artist": "曾沛慈",
+    "sha256": "43d9658f8a5e8cf18b875d845250d56fec8a5ddbe30b8da4760ab05c93a6fce6",
+    "src": "music/track-05.mp3"
+  },
+  {
+    "title": "下周同样时间",
+    "artist": "曾沛慈",
+    "sha256": "7724a6e6c03aa3bae9a432802c7e45325bf2e391b99930de1c2d5260fdcd1403",
+    "src": "music/track-06.mp3"
+  },
+  {
+    "title": "关于爱这件事",
+    "artist": "曾沛慈",
+    "sha256": "d57600dd67c2c9c9ba50d85edeccc7cda4ffcd8e8d9f0e53c17b238d9e7f3e12",
+    "src": "music/track-07.mp3"
+  },
+  {
+    "title": "只在意你的一切",
+    "artist": "曾沛慈",
+    "sha256": "ecbb404e592d6618af9b9dee4fc8695d8c49769bae10e282854f8ba58107428e",
+    "src": "music/track-08.mp3"
+  },
+  {
+    "title": "听者有心",
+    "artist": "曾沛慈",
+    "sha256": "e2ab96dacb63298799cb036aad0d21d5f98cd4b380f02c880062df0d85bbcad0",
+    "src": "music/track-09.mp3"
+  },
+  {
+    "title": "够爱",
+    "artist": "曾沛慈",
+    "sha256": "cf71762a18b369c9999f77e51dac15d2c12fed1f63165dbb059c842d5d571e52",
+    "src": "music/track-10.mp3"
+  },
+  {
+    "title": "失眠的人",
+    "artist": "曾沛慈",
+    "sha256": "1540fe767de0df1a155495449aa45af12468e48333c7983bba58891e4800f5c0",
+    "src": "music/track-11.mp3"
+  },
+  {
+    "title": "孙尚香",
+    "artist": "曾沛慈",
+    "sha256": "3fe5de5a836a7605eabed689177f47305fc1f31fad88e281c0122354e3c52cdb",
+    "src": "music/track-12.mp3"
+  },
+  {
+    "title": "怎么能这样",
+    "artist": "曾沛慈",
+    "sha256": "3c4b163f68b9af225c234eead7e70dbdc2724012021b68224fcad841a2b995ed",
+    "src": "music/track-13.mp3"
+  },
+  {
+    "title": "抢先看",
+    "artist": "曾沛慈",
+    "sha256": "71deb4b05e4c8a7a1e31f145848d46d20a99339d0e30f79fd8f971fc63165882",
+    "src": "music/track-14.mp3"
+  },
+  {
+    "title": "数到十",
+    "artist": "曾沛慈",
+    "sha256": "d4e4d2df4b4ac91e9cc8ee17c48fb748c5ebd5b3b5ae3ea31cf7485d540d0d89",
+    "src": "music/track-15.mp3"
+  },
+  {
+    "title": "最后一次哭",
+    "artist": "曾沛慈",
+    "sha256": "2f7658569a11bdb5558df29671f21a5df3c06cb2cd219d84a7b8b728dc53ff6f",
+    "src": "music/track-16.mp3"
+  },
+  {
+    "title": "未命名的悲伤",
+    "artist": "曾沛慈",
+    "sha256": "d3e8bc16f39b88ec58d8925fd4d9b0674274f27e45e590578e7c3415237363d9",
+    "src": "music/track-17.mp3"
+  },
+  {
+    "title": "水深火热",
+    "artist": "曾沛慈",
+    "sha256": "8dd0931fa685ae34189a488ae413cb4dbd64a09626001f432cb08ec84fb2d758",
+    "src": "music/track-18.mp3"
+  },
+  {
+    "title": "没有了",
+    "artist": "曾沛慈",
+    "sha256": "f21196bc6e7cd53dbcaf7248f42cdb1afea3b09845211c468556722f97323071",
+    "src": "music/track-19.mp3"
+  },
+  {
+    "title": "连锁反应",
+    "artist": "曾沛慈",
+    "sha256": "359424aba425539e2b79e43a13cefe242ec64d613e565215578681882d99b24f",
+    "src": "music/track-20.mp3"
+  },
+  {
+    "title": "雨季",
+    "artist": "曾沛慈",
+    "sha256": "5a5d8fa19f8552ccc4577ea931d791b109231722c7e55f28f3b2dc25094059f6",
+    "src": "music/track-21.mp3"
+  }
+]
