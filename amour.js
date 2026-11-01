@@ -7,12 +7,27 @@ const heroLyrics=[
  {lines:['孤单的你','独自一人走过这雨季'],song:'雨季',url:'https://www.youtube.com/watch?v=iGQQZtwJDDQ'},
  {lines:['你在世界哪端','我都不会走开'],song:'这里还有我',url:'https://www.joox.com/hk/single/1iXUtVrkF6MgvZ6c4uhIIA%3D%3D'},
  {lines:['原来最好的拥有','是不曾拥有'],song:'数不尽的星空',url:'https://www.mulanci.org/lyric/sl271033/'},
- {lines:['等着幸福降临','请怀着决心，撑多两季'],song:'下周同样时间',album:'下周同样时间',url:'https://www.joox.com/my-zh_cn/single/_SLpB2jr_hTk5X5qpqGlAA%3D%3D'},
- {lines:['我们都在学','每天都勇敢一点'],song:'数到十',album:'下周同样时间',url:'https://www.joox.com/my-zh_cn/single/O8sj2fL5vBsToQ1lv%2Bc6Tw%3D%3D'},
- {lines:['对天发誓','这是最后一次'],song:'最后一次哭',album:'下周同样时间',url:'https://www.joox.com/my-zh_cn/single/0BywF3Qulx%2Buy0QXsb7P6w%3D%3D'},
  {lines:['知情地拥有','识趣放掉'],song:'识趣',album:'谜之音',url:'https://www.joox.com/hk/single/ZU8rHXF_dqgTSSvKBsgDhQ%3D%3D'},
  {lines:['亲爱的，这些年','感谢有你在身边'],song:'大风吹',album:'谜之音',url:'https://www.joox.com/hk/single/xFmDRjIvNsVxygwCKcwoHQ%3D%3D'},
- {lines:['每一次想你的时候','隐约地好像还有'],song:'没有了',album:'谜之音',url:'https://www.joox.com/hk/single/SLNSNii92lbyP4as4nODXw%3D%3D'}
+ {lines:['每一次想你的时候','隐约地好像还有'],song:'没有了',album:'谜之音',url:'https://www.joox.com/hk/single/SLNSNii92lbyP4as4nODXw%3D%3D'},
+ {"lines": ["我等啊等 等著奇迹降临", "可人生如戏 要靠编剧", "冷战吻戏都有分镜"], "song": "下周同样时间", "album": "下周同样时间", "url": "https://www.joox.com/my-zh_cn/single/_SLpB2jr_hTk5X5qpqGlAA%3D%3D"},
+ {"lines": ["等著 幸福降临", "请怀著决心撑多两季", "彩蛋总会送你手里"], "song": "下周同样时间", "album": "下周同样时间", "url": "https://www.joox.com/my-zh_cn/single/_SLpB2jr_hTk5X5qpqGlAA%3D%3D"},
+ {"lines": ["本来跟你 应该素未谋面", "可你身上 二手亚麻披肩", "佛手柑的香味 刺激嗅觉"], "song": "抢先看", "album": "下周同样时间", "url": "https://www.him.com.tw/CN/albumcon.php?cid=818"},
+ {"lines": ["我们略过 前情提要赴约", "有生之年 无预警地遇见", "命运忙著剪接 精彩画面"], "song": "抢先看", "album": "下周同样时间", "url": "https://www.him.com.tw/CN/albumcon.php?cid=818"},
+ {"lines": ["爱像多米诺骨牌", "一字排开 不到后来不明白"], "song": "连锁反应", "album": "下周同样时间", "url": "https://www.him.com.tw/CN/albumcon.php?cid=818"},
+ {"lines": ["恋人来了又散 将用来交换", "哪些美满 等到你就是答案"], "song": "连锁反应", "album": "下周同样时间", "url": "https://www.him.com.tw/CN/albumcon.php?cid=818"},
+ {"lines": ["我们都在学 每天都勇敢一点", "在这个人间 路过了伤悲", "距离幸福就不远"], "song": "数到十", "album": "下周同样时间", "url": "https://www.joox.com/my-zh_cn/single/O8sj2fL5vBsToQ1lv%2Bc6Tw%3D%3D"},
+ {"lines": ["错过 一个人 两颗心 单身三年", "七月的 第八天 分手纪念", "那时的我们说了九次再见"], "song": "数到十", "album": "下周同样时间", "url": "https://www.joox.com/my-zh_cn/single/O8sj2fL5vBsToQ1lv%2Bc6Tw%3D%3D"},
+ {"lines": ["你有没有想过", "如果明天是末日", "还等什么 还等什么 赶快去爱"], "song": "一抹黄色的天", "album": "下周同样时间", "url": "https://www.him.com.tw/CN/albumcon.php?cid=818"},
+ {"lines": ["太阳高挂 那边", "我走过白色冬天", "终究相信 依然相信 爱在前面"], "song": "一抹黄色的天", "album": "下周同样时间", "url": "https://www.him.com.tw/CN/albumcon.php?cid=818"},
+ {"lines": ["但愿 孤单一人的路上 能不慌不忙", "但愿 我们一样能抵挡 寂寞的张狂"], "song": "未命名的悲伤", "album": "下周同样时间", "url": "https://www.him.com.tw/CN/albumcon.php?cid=818"},
+ {"lines": ["但愿 你的行囊 有足够的食粮", "到达远方", "Wow 无常如常 未命名的悲伤"], "song": "未命名的悲伤", "album": "下周同样时间", "url": "https://www.him.com.tw/CN/albumcon.php?cid=818"},
+ {"lines": ["不如 找点事做", "猜你早就 得知", "我其实 不急著走"], "song": "听者有心", "album": "下周同样时间", "url": "https://www.him.com.tw/CN/albumcon.php?cid=818"},
+ {"lines": ["吐吐苦水 谈谈生活", "别前进太多", "留白处 任你填空"], "song": "听者有心", "album": "下周同样时间", "url": "https://www.him.com.tw/CN/albumcon.php?cid=818"},
+ {"lines": ["你是我的刺 我怎么好意思", "假装我失去 感知"], "song": "最后一次哭", "album": "下周同样时间", "url": "https://www.joox.com/my-zh_cn/single/0BywF3Qulx%2Buy0QXsb7P6w%3D%3D"},
+ {"lines": ["我要我控制 这是最后一次 真的", "最后一次 以泪水 去诠释", "错爱两个字 怎么去吞噬 我所有理智"], "song": "最后一次哭", "album": "下周同样时间", "url": "https://www.joox.com/my-zh_cn/single/0BywF3Qulx%2Buy0QXsb7P6w%3D%3D"},
+ {"lines": ["Hey别分开 就去爱", "一直走 就走到未来", "手长茧 脚磨坏 有你在 就不怕意外"], "song": "关于爱这件事", "album": "下周同样时间", "url": "https://www.him.com.tw/CN/albumcon.php?cid=818"},
+ {"lines": ["等白头 容貌衰 由时光 来表白", "故事的尾声 手没放开", "原来这就是爱"], "song": "关于爱这件事", "album": "下周同样时间", "url": "https://www.him.com.tw/CN/albumcon.php?cid=818"}
 ];
 let heroLyricIndex=-1;
 function changeHeroLyric(){
