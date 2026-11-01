@@ -1,12 +1,12 @@
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-// One brief excerpt per song; the song label links to its lyric source.
+// Related lines stay together as one passage; source links identify each song.
 const heroLyrics=[
- {text:'一个人的想念',song:'一个人想着一个人',url:'https://www.joox.com/mo/single/fY_rrhm2QGF%2BRv5LCbqKWw%3D%3D'},
- {text:'不过失去了一点点',song:'不过失去了一点点',url:'https://www.joox.com/mo/single/LXwh7%2BM8rzozKU47%2BxOUkg%3D%3D'},
- {text:'你陪我走过的雨季',song:'雨季',url:'https://www.joox.com/mo/single/AD7BpIiki1i6hRjlIsV1xQ%3D%3D'},
- {text:'记得这里还有我',song:'这里还有我',url:'https://www.joox.com/hk/single/1iXUtVrkF6MgvZ6c4uhIIA%3D%3D'},
- {text:'原来最好的拥有',song:'数不尽的星空',url:'https://www.mulanci.org/lyric/sl271033/'},
- {text:'当赚一些坚强',song:'偏爱',url:'https://www.mulanci.org/lyric/tl270992/'}
+ {lines:['我爱上你，你不必保密','我爱着你，容许我，不冷静','谜之音请你仔细听'],song:'谜之音',url:'https://www.youtube.com/watch?v=aQpA8Ke5-p4'},
+ {lines:['一个人的想念','两个人的画面'],song:'一个人想着一个人',url:'https://www.joox.com/mo/single/fY_rrhm2QGF%2BRv5LCbqKWw%3D%3D'},
+ {lines:['我心爱的你','我是真的好想你'],song:'不过失去了一点点',url:'https://www.joox.com/my-zh_cn/single/LXwh7%2BM8rzozKU47%2BxOUkg%3D%3D'},
+ {lines:['孤单的你','独自一人走过这雨季'],song:'雨季',url:'https://www.youtube.com/watch?v=iGQQZtwJDDQ'},
+ {lines:['你在世界哪端','我都不会走开'],song:'这里还有我',url:'https://www.joox.com/hk/single/1iXUtVrkF6MgvZ6c4uhIIA%3D%3D'},
+ {lines:['原来最好的拥有','是不曾拥有'],song:'数不尽的星空',url:'https://www.mulanci.org/lyric/sl271033/'}
 ];
 let heroLyricIndex=-1;
 function changeHeroLyric(){
@@ -14,7 +14,7 @@ function changeHeroLyric(){
  const choice=Math.floor(Math.random()*(heroLyrics.length-(heroLyricIndex<0?0:1)));
  heroLyricIndex=heroLyricIndex<0?choice:choice>=heroLyricIndex?choice+1:choice;
  const lyric=heroLyrics[heroLyricIndex];
- $('#hero-lyric-text').textContent=lyric.text;
+ $('#hero-lyric-text').textContent=lyric.lines.join('\n');
  $('#hero-lyric-song').textContent=`— 曾沛慈《${lyric.song}》 ↗`;
  $('#hero-lyric-song').href=lyric.url;
  if(!matchMedia('(prefers-reduced-motion:reduce)').matches){
@@ -72,5 +72,6 @@ async function thumbnail(file,width){const bitmap=await createImageBitmap(file),
 $('#import-files').onchange=async e=>{const files=[...e.target.files],category=$('#import-category').value,period=$('#import-period').value.trim()||'未标注时期';if(!files.length)return;if(!db){$('#import-status').textContent='当前浏览器无法使用本地存储，请使用普通浏览模式后重试。';return;}let done=0,failed=0;e.target.disabled=true;for(const file of files){$('#import-status').textContent=`正在珍藏 ${done+failed+1} / ${files.length}…`;try{if(!['image/jpeg','image/png','image/webp'].includes(file.type))throw new Error('格式不支持');const p={id:crypto.randomUUID(),title:facets[category][1]+' · 新的心动',category,period,note:'把这一次心动，轻轻夹进时光的书页。',local:true,original:file,mediumBlob:file,thumbBlob:file};await savePhoto(p);photos.push(hydrate(p));done++;}catch{failed++;}}e.target.disabled=false;e.target.value='';filter=category;onlyHearts=false;$('#favorites').setAttribute('aria-pressed',false);limit=24;render();$('#import-status').textContent=`已珍藏 ${done} 张${failed?`，${failed} 张未能保存（格式损坏或存储空间不足）`:''}。照片仅保存在本浏览器；清除网站数据会移除本地珍藏。`;};
 async function init(){try{const response=await fetch('pets/photos.json');if(!response.ok)throw new Error('photos');const data=await response.json();basePhotos=data.map((p,i)=>({...p,id:String(p.id),title:p.title||titles[i],category:p.category||'stage',period:p.period||periods[i],note:p.note||notes[i]}));photos=[...basePhotos];$('#cover-img').src=photos[0].medium;$('#credits-list').innerHTML=basePhotos.map(p=>`<article><b>${esc(p.title)}</b><br>${credit(p)}</article>`).join('');render();}catch{$('#result-status').textContent='珍藏目录暂未加载，请刷新重试。';}try{db=await openDb();photos.push(...(await readStored()).map(hydrate));render();}catch{toast('本地珍藏存储暂不可用，精选照片仍可浏览。');}}
 init();
+
 
 
