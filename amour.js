@@ -52,13 +52,13 @@ const notes=['人海很大，而你站在那里，就有了光。','把今天的
 let photos=[],basePhotos=[],filter='all',view='lookbook',onlyHearts=false,limit=24,selected=null,lightboxPhotos=[],lastFocus=null,db;
 let hearts={};try{const stored=JSON.parse(localStorage.getItem('mi-amour-hearts')||'{}');if(stored&&typeof stored==='object')hearts=stored;}catch{}
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const fileName=p=>`No. ${String(photos.indexOf(p)+1).padStart(3,'0')}`;
+const fileName=p=>{const number=p.archiveNumber??(basePhotos.reduce((max,item)=>Math.max(max,item.archiveNumber||0),0)+photos.indexOf(p)-basePhotos.length+1);return `No. ${String(number).padStart(3,'0')}`;};
 const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('revealed');observer.unobserve(e.target);}}),{rootMargin:'100px'});
 let toastTimer;function toast(text){$('#toast').textContent=text;$('#toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').hidden=true,3500);}
 function current(){return photos.filter(p=>(filter==='all'||p.category===filter)&&(!onlyHearts||hearts[p.id]));}
 function renderFilters(){$('#filters').innerHTML=Object.entries(facets).map(([key,[en,zh]])=>`<button class="filter ${key===filter?'active':''}" data-filter="${key}" aria-pressed="${key===filter}">${en}<small>${zh}</small><sup>${key==='all'?photos.length:photos.filter(p=>p.category===key).length}</sup></button>`).join('');}
 function render(){
- observer.disconnect();renderFilters();const list=current();$('#total').textContent=String(photos.length).padStart(3,'0');$('#heart-total').textContent=photos.filter(p=>hearts[p.id]).length;
+ observer.disconnect();updateCover();renderFilters();const list=current();$('#total').textContent=String(photos.length).padStart(3,'0');$('#heart-total').textContent=photos.filter(p=>hearts[p.id]).length;
  $('#gallery').classList.toggle('index-mode',view==='index');$('#view-label').textContent=view==='index'?'MINI INDEX VIEW':'LOOKBOOK VIEW';$('#result-status').textContent=`${String(list.length).padStart(3,'0')} MOMENTS ${onlyHearts?'LOVED':'COLLECTED'} / ${filter==='all'?'ALL AMOUR':facets[filter][0]}`;
  $('#gallery').innerHTML=list.slice(0,limit).map((p,i)=>`<article class="photo-card"><button class="photo-button" data-photo="${p.id}" aria-label="查看 ${esc(p.title)}"><div class="image-wrap"><img class="photo-image" src="${view==='index'?p.thumb:p.medium}" alt="曾沛慈 · ${esc(p.title)}" loading="${i<4?'eager':'lazy'}" decoding="async"><span class="loading">♡ LOADING</span><span class="frame"></span></div></button><div class="card-caption"><div><b>${fileName(p)}</b><small>${esc(p.title)}</small></div><button class="heart ${hearts[p.id]?'liked':''}" data-heart="${p.id}" aria-label="${hearts[p.id]?'取消':'记录'}心动 ${esc(p.title)}" aria-pressed="${!!hearts[p.id]}">${hearts[p.id]?'♥':'♡'}</button></div></article>`).join('')||`<div class="empty"><span>♡</span><p>${onlyHearts?'还没有收藏这份心动。<br>轻点照片旁的小爱心，把喜欢留下。':'这一页，留给下一次心动。<br>为「'+facets[filter][1]+'」添入你的珍藏。'}</p><button id="empty-action">${onlyHearts?'看看全部珍藏':'＋ 添一份珍藏'}</button></div>`;
  $$('.photo-card').forEach(c=>observer.observe(c));$$('.photo-image').forEach(img=>{img.onload=()=>img.classList.add('loaded');img.onerror=()=>{img.nextElementSibling.textContent='图片暂未加载';};if(img.complete&&img.naturalWidth)img.classList.add('loaded');});
@@ -82,7 +82,24 @@ $('#previous').onclick=()=>navigate(-1);$('#next').onclick=()=>navigate(1);$('#l
 $('#close-lightbox').onclick=()=>$('#lightbox').close();$('#lightbox').addEventListener('close',()=>{const focusId=lastFocus?.dataset.photo;render();const target=focusId?document.querySelector('[data-photo=' + JSON.stringify(focusId) + ']'):lastFocus;target?.focus({preventScroll:true});});
 document.addEventListener('keydown',e=>{if(!$('#lightbox').open)return;if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();navigate(e.key==='ArrowRight'?1:-1);}});
 let touch;$('.large-photo').addEventListener('touchstart',e=>{touch=[e.changedTouches[0].clientX,e.changedTouches[0].clientY];},{passive:true});$('.large-photo').addEventListener('touchend',e=>{if(!touch)return;const dx=e.changedTouches[0].clientX-touch[0],dy=e.changedTouches[0].clientY-touch[1];if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5)navigate(dx<0?1:-1);touch=null;},{passive:true});
-$('#hero-photo').onclick=()=>{if(photos.length){lastFocus=$('#hero-photo');openPhoto(photos[0].id,true);}};$('#back-top').onclick=()=>window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});
+let heroPhotoIndex=0;
+function updateCover(){
+ const count=photos.length;
+ $('#cover-previous').disabled=$('#cover-next').disabled=count<2;
+ $('#hero-photo').disabled=count===0;
+ if(!count)return;
+ heroPhotoIndex=((heroPhotoIndex%count)+count)%count;
+ const photo=photos[heroPhotoIndex],image=$('#cover-img');
+ if(image.dataset.photo!==photo.id){
+  image.dataset.photo=photo.id;image.src=photo.src;image.alt=`曾沛慈 · ${photo.title}`;
+  $('#hero-photo').setAttribute('aria-label',`查看封面 ${fileName(photo)} ${photo.title}`);
+ }
+ $('#cover-position').textContent=`${String(heroPhotoIndex+1).padStart(2,'0')} / ${count}`;
+}
+function changeCover(direction){if(!photos.length)return;heroPhotoIndex=(heroPhotoIndex+direction+photos.length)%photos.length;updateCover();}
+$('#cover-previous').addEventListener('click',()=>changeCover(-1));
+$('#cover-next').addEventListener('click',()=>changeCover(1));
+$('#hero-photo').onclick=()=>{if(photos.length){lastFocus=$('#hero-photo');openPhoto(photos[heroPhotoIndex].id,true);}};$('#back-top').onclick=()=>window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});
 $('#credits-open').onclick=()=>show($('#credits-dialog'));
 function openImport(){if(filter!=='all')$('#import-category').value=filter;show($('#import-dialog'));}$('#import-open').onclick=openImport;
 function openDb(){return new Promise((resolve,reject)=>{const request=indexedDB.open('mi-amour-archive',1);request.onupgradeneeded=()=>request.result.createObjectStore('photos',{keyPath:'id'});request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);});}
@@ -91,7 +108,7 @@ function savePhoto(p){return new Promise((resolve,reject)=>{const tx=db.transact
 function hydrate(p){return {...p,src:URL.createObjectURL(p.original),medium:URL.createObjectURL(p.mediumBlob),thumb:URL.createObjectURL(p.thumbBlob)};}
 async function thumbnail(file,width){const bitmap=await createImageBitmap(file),scale=Math.min(1,width/bitmap.width);const canvas=document.createElement('canvas');canvas.width=Math.round(bitmap.width*scale);canvas.height=Math.round(bitmap.height*scale);canvas.getContext('2d').drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();return new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(new Error('无法处理图片')),'image/jpeg',.85));}
 $('#import-files').onchange=async e=>{const files=[...e.target.files],category=$('#import-category').value,period=$('#import-period').value.trim()||'未标注时期';if(!files.length)return;if(!db){$('#import-status').textContent='当前浏览器无法使用本地存储，请使用普通浏览模式后重试。';return;}let done=0,failed=0;e.target.disabled=true;for(const file of files){$('#import-status').textContent=`正在珍藏 ${done+failed+1} / ${files.length}…`;try{if(!['image/jpeg','image/png','image/webp'].includes(file.type))throw new Error('格式不支持');const p={id:crypto.randomUUID(),title:facets[category][1]+' · 新的心动',category,period,note:'把这一次心动，轻轻夹进时光的书页。',local:true,original:file,mediumBlob:file,thumbBlob:file};await savePhoto(p);photos.push(hydrate(p));done++;}catch{failed++;}}e.target.disabled=false;e.target.value='';filter=category;onlyHearts=false;$('#favorites').setAttribute('aria-pressed',false);limit=24;render();$('#import-status').textContent=`已珍藏 ${done} 张${failed?`，${failed} 张未能保存（格式损坏或存储空间不足）`:''}。照片仅保存在本浏览器；清除网站数据会移除本地珍藏。`;};
-async function init(){try{const response=await fetch('pets/photos.json');if(!response.ok)throw new Error('photos');const data=await response.json();basePhotos=data.map((p,i)=>({...p,id:String(p.id),title:p.title||titles[i],category:p.category||'stage',period:p.period||periods[i],note:p.note||notes[i]}));photos=[...basePhotos];$('#cover-img').src=photos[0].medium;$('#credits-list').innerHTML=basePhotos.map(p=>`<article><b>${esc(p.title)}</b><br>${credit(p)}</article>`).join('');render();}catch{$('#result-status').textContent='珍藏目录暂未加载，请刷新重试。';}try{db=await openDb();photos.push(...(await readStored()).map(hydrate));render();}catch{toast('本地珍藏存储暂不可用，精选照片仍可浏览。');}}
+async function init(){try{const response=await fetch('pets/photos.json?v=cover-navigation-5');if(!response.ok)throw new Error('photos');const data=await response.json();basePhotos=data.map((p,i)=>({...p,id:String(p.id),title:p.title||titles[i],category:p.category||'stage',period:p.period||periods[i],note:p.note||notes[i]}));photos=[...basePhotos];$('#credits-list').innerHTML=basePhotos.map(p=>`<article><b>${esc(p.title)}</b><br>${credit(p)}</article>`).join('');render();}catch{$('#result-status').textContent='珍藏目录暂未加载，请刷新重试。';}try{db=await openDb();photos.push(...(await readStored()).map(hydrate));render();}catch{toast('本地珍藏存储暂不可用，精选照片仍可浏览。');}}
 init();
 
 
