@@ -64,7 +64,7 @@
  }
  async function initMusic(){
   try{
-   const response=await fetch('music/playlist.json?v=music-1');if(!response.ok)throw new Error('playlist');
+   const response=await fetch('music/playlist.json?v=music-2');if(!response.ok)throw new Error('playlist');
    tracks=await response.json();if(!tracks.length)throw new Error('empty');
    $('#music-track').replaceChildren(...tracks.map((track,i)=>new Option(`${String(i+1).padStart(2,'0')} · ${track.title}`,String(i))));
    mode=preferences.mode==='one'?'one':'all';updateMode();
