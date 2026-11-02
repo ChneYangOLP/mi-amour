@@ -12,10 +12,24 @@
   status(playing?'NOW PLAYING · 正在播放':'轻点播放，陪你慢慢看');
   if('mediaSession' in navigator)navigator.mediaSession.playbackState=playing?'playing':'paused';
  }
- async function play(){
+ function playAfterInteraction(){
+  if(audio.paused)play();
+ }
+ async function play({automatic=false}={}){
   if(!tracks.length)return;
+  document.removeEventListener('click',playAfterInteraction);
   status('正在打开音乐…');
-  try{await audio.play();}catch(error){if(error.name!=='AbortError')status(error.name==='NotAllowedError'?'请再点一下播放按钮':'暂时无法播放，请重试或切换歌曲');syncPlayButtons();}
+  try{
+   await audio.play();
+  }catch(error){
+   if(automatic && error.name==='NotAllowedError'){
+    status('轻点页面，开始播放音乐');
+    document.addEventListener('click',playAfterInteraction,{once:true});
+   }else if(error.name!=='AbortError'){
+    status(error.name==='NotAllowedError'?'请再点一下播放按钮':'暂时无法播放，请重试或切换歌曲');
+   }
+   syncPlayButtons();
+  }
  }
  function syncPlayButtons(){
   document.querySelectorAll('[data-music-play]').forEach(button=>{
@@ -72,6 +86,7 @@
    $('#music-volume').value=audio.volume;$('#music-volume-value').textContent=`${Math.round(audio.volume*100)}%`;
    document.querySelectorAll('[data-music-play],[data-music-step],#music-track,#music-mode').forEach(button=>button.disabled=false);
    selectTrack(Math.max(0,tracks.findIndex(track=>track.src===preferences.src)));
+   play({automatic:true});
   }catch{status('歌单暂未加载，请刷新重试');$('#music-title').textContent='私藏歌单';}
  }
  initMusic();
