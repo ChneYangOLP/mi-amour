@@ -91,7 +91,7 @@
 .archive-dedication > span { color: #a38c99; font-size: 9px; letter-spacing: .08em; }
 .archive-dedication > em { color: #b398a8; font: italic 18px var(--serif); }
 .archive-dedication .chrome { padding-inline: 8px; }
-.footer-pets { font: italic 40px/1 var(--serif); color: #c4adb9; letter-spacing: -2px; }
+footer > .footer-pets { font: italic 40px/1 var(--serif); color: #c4adb9; letter-spacing: -2px; }
 @media (max-width: 1000px) {
   .amour-interlude { grid-template-columns: 100px minmax(190px, 1fr) 1.2fr; gap: 20px; }
   .amour-stamp { width: 95px; }
@@ -127,5 +127,5 @@
   .archive-dedication > span { font-size: 8px; letter-spacing: .02em; }
   .archive-dedication > em { font-size: 15px; white-space: nowrap; }
   .archive-dedication .chrome { padding-inline: 2px; }
-  .footer-pets { font-size: 32px; }
+  footer > .footer-pets { font-size: 32px; }
 }
