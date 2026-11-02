@@ -1,0 +1,131 @@
+/* Small keepsakes around the photographs. */
+.hero-keepsakes {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 20px;
+  color: #a18192;
+}
+.jelly-label {
+  padding: 7px 13px;
+  border: 1px solid #e7c5d4;
+  border-radius: 18px;
+  background: linear-gradient(160deg, #fffafc, #f3dde7b3);
+  box-shadow: inset 0 1px #fff, 0 2px 5px #a37b8e08;
+  font-size: 8px;
+  letter-spacing: .08em;
+}
+.keepsake-caption { font: italic 18px var(--serif); }
+.pets-autograph {
+  position: absolute;
+  bottom: 14px;
+  right: 0;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: rotate(-9deg);
+  color: #ac879b;
+  pointer-events: none;
+}
+.pets-autograph > span { font: italic 51px/.9 var(--serif); letter-spacing: -3px; }
+.pets-autograph > small { margin-top: 8px; font: 6px var(--mono); letter-spacing: .15em; }
+.pets-autograph svg { width: 88px; height: 18px; fill: none; stroke: #ba95a9; stroke-width: 1; }
+.amour-interlude {
+  position: relative;
+  display: grid;
+  grid-template-columns: 125px minmax(220px, 1fr) 1fr;
+  align-items: center;
+  gap: 35px;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 54px 6% 45px;
+}
+.amour-stamp {
+  width: 115px;
+  padding: 8px;
+  background: radial-gradient(circle at 4px 4px, transparent 3px, #e8d3dd 3.5px) -4px -4px/8px 8px;
+  transform: rotate(-9deg);
+}
+.stamp-inner {
+  display: flex;
+  min-height: 126px;
+  padding: 12px 8px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #b89aab;
+  background: #f6eaf0;
+  color: #a27c91;
+}
+.stamp-inner .mono { font-size: 7px; letter-spacing: .1em; }
+.stamp-flower { width: 52px; height: 52px; fill: none; stroke: currentColor; stroke-width: 1; }
+.stamp-inner > em { font: italic 17px var(--serif); }
+.pets-lettering { position: relative; text-align: center; padding: 5px 20px 15px; }
+.pets-lettering > .mono { font-size: 7px; letter-spacing: .2em; color: #ab939f; }
+.pets-word {
+  position: relative;
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  margin: -5px auto 0;
+  padding: 0 18px 8px 0;
+  font: italic clamp(100px, 12vw, 168px)/1 var(--serif);
+  letter-spacing: -7px;
+  color: #a8a5af;
+  background: linear-gradient(165deg, #93909c 5%, #dedce1 28%, #a7a3b0 44%, #e8e6eb 57%, #9b94a2 78%, #d1b7c5);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(1px 2px 0 #fff);
+}
+.pets-lettering > svg { position: absolute; left: 9%; bottom: 5px; width: 83%; height: 45px; overflow: visible; fill: none; stroke: #cf9db4; stroke-width: 1; }
+.lettering-spark { position: absolute; right: 8px; top: 38px; color: #b8a6b4; font-size: 29px; }
+.lettering-heart { position: absolute; left: 3%; top: 55%; color: #bd8da4; font: 24px var(--serif); transform: rotate(-15deg); }
+.interlude-note { position: relative; padding-left: 23px; border-left: 1px solid #e1ced9; }
+.interlude-note .eyebrow { font-size: 7px; letter-spacing: .13em; }
+.interlude-note h2 { margin: 12px 0; font-size: 18px; font-weight: 400; line-height: 1.8; letter-spacing: .12em; color: #78616e; }
+.interlude-note p { font-size: 11px; line-height: 2; letter-spacing: .05em; color: #a18b98; margin: 0; }
+.interlude-note .note-signature { margin-top: 16px; font: italic 21px var(--serif); color: #b1849b; }
+.little-orbit { position: absolute; width: 50px; height: 50px; top: 17px; right: 5%; fill: none; stroke: #c6b6c2; stroke-width: .7; pointer-events: none; }
+.archive-dedication { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin: 0 0 24px; padding: 12px 0; border-block: 1px solid #e6dce2; }
+.archive-dedication > span { color: #a38c99; font-size: 9px; letter-spacing: .08em; }
+.archive-dedication > em { color: #b398a8; font: italic 18px var(--serif); }
+.archive-dedication .chrome { padding-inline: 8px; }
+.footer-pets { font: italic 40px/1 var(--serif); color: #c4adb9; letter-spacing: -2px; }
+@media (max-width: 1000px) {
+  .amour-interlude { grid-template-columns: 100px minmax(190px, 1fr) 1.2fr; gap: 20px; }
+  .amour-stamp { width: 95px; }
+  .stamp-inner { min-height: 115px; }
+  .interlude-note h2 { font-size: 15px; }
+  .interlude-note p { font-size: 10px; }
+}
+@media (max-width: 720px) {
+  .hero-keepsakes { gap: 10px; margin: -3px 0 22px; }
+  .jelly-label { padding: 6px 10px; font-size: 7px; }
+  .keepsake-caption { font-size: 17px; }
+  .pets-autograph { right: -8px; bottom: -1px; }
+  .pets-autograph > span { font-size: 39px; }
+  .pets-autograph svg { width: 65px; height: 13px; }
+  .pets-autograph > small { font-size: 5px; margin-top: 5px; }
+  .amour-interlude { grid-template-columns: 80px minmax(0, 1fr); gap: 22px; padding: 36px 8% 28px; }
+  .amour-stamp { width: 80px; padding: 6px; }
+  .stamp-inner { min-height: 100px; padding: 9px 4px; }
+  .stamp-inner .mono { font-size: 5px; }
+  .stamp-flower { width: 39px; height: 39px; }
+  .stamp-inner > em { font-size: 15px; }
+  .pets-lettering { padding: 5px 0 14px; }
+  .pets-word { font-size: 112px; letter-spacing: -5px; }
+  .lettering-spark { top: 23px; right: -6px; font-size: 23px; }
+  .lettering-heart { left: 1%; font-size: 18px; }
+  .pets-lettering > .mono { font-size: 6px; letter-spacing: .1em; }
+  .interlude-note { grid-column: 1/-1; padding: 0 0 0 16px; margin-top: 2px; }
+  .interlude-note h2 { margin: 7px 0; font-size: 16px; }
+  .interlude-note p { font-size: 11px; }
+  .interlude-note .note-signature { margin-top: 10px; font-size: 19px; }
+  .little-orbit { right: 9%; top: 15px; width: 35px; height: 35px; }
+  .archive-dedication { gap: 8px; margin-bottom: 20px; }
+  .archive-dedication > span { font-size: 8px; letter-spacing: .02em; }
+  .archive-dedication > em { font-size: 15px; white-space: nowrap; }
+  .archive-dedication .chrome { padding-inline: 2px; }
+  .footer-pets { font-size: 32px; }
+}
